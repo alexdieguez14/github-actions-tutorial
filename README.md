@@ -1,2 +1,2 @@
-# -github-actions-tutorial
+# github-actions-tutorial
 Aprendiendo GitHub Actions
