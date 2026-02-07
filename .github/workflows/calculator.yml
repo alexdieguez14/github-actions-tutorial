@@ -1,0 +1,48 @@
+name: Calculadora
+
+on:
+  workflow_dispatch:
+    inputs:
+      numero1:
+        description: 'Primer número'
+        required: true
+        default: 0
+      numero2:
+        description: 'Segundo número'
+        required: true
+        default: 0
+
+jobs:
+  calcular:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mostrar números
+        run: |
+          echo "Número 1: ${{ github.event.inputs.numero1 }}"
+          echo "Número 2: ${{ github.event.inputs.numero2 }}"
+
+      - name: Operaciones matemáticas
+        run: |
+          n1=${{ github.event.inputs.numero1 }}
+          n2=${{ github.event.inputs.numero2 }}
+
+          # Suma
+          suma=$((n1 + n2))
+          echo "Suma: $suma"
+
+          # Resta
+          resta=$((n1 - n2))
+          echo "Resta: $resta"
+
+          # Multiplicación
+          mult=$((n1 * n2))
+          echo "Multiplicación: $mult"
+
+          # División (evitar división por cero)
+          if [ "$n2" -ne 0 ]; then
+            div=$((n1 / n2))
+            echo "División: $div"
+          else
+            echo "División: error, división por cero"
+          fi
