@@ -1,0 +1,22 @@
+name: Ejercicio1
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'   # Lunes a las 9:00 (UTC)
+  workflow_dispatch:     # Permite ejecutarlo manualmente
+
+jobs:
+  motivate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v3
+
+      - name: Mensaje motivacional
+        run: echo "Nueva semana, nuevas oportunidades."
+
+      - name: Mostrar los últimos 5 commits
+        run: |
+          echo "Últimos 5 commits:"
+          git log -5 --oneline
