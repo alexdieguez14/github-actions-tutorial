@@ -1,0 +1,10 @@
+name: Only Main Branch
+on:
+  push:
+    branches: [main]
+
+jobs:
+  main-only:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This is main branch"
