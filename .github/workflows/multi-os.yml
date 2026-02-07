@@ -1,0 +1,22 @@
+name: Multi-OS Workflow
+
+on:
+  push:
+
+jobs:
+  multi-os-test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v3
+
+      - name: Mostrar sistema operativo
+        run: |
+          echo "Ejecutando en: ${{ matrix.os }}"
+          # Comando para ver detalles del SO
+          uname -a || ver
