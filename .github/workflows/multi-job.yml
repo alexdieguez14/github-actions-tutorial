@@ -1,0 +1,19 @@
+name: Multi Job
+on: [push]
+
+jobs:
+  first:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "First job"
+
+  second:
+    needs: first
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Second job"
+
+  parallel:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Parallel job"
